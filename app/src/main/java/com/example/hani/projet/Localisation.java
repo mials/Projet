@@ -92,7 +92,9 @@ public class Localisation implements LocationListener {
 
     public void affichageSite(ArrayList<Site> resultat)
     {
-
+        for (Site site : resultat) {
+            this.maps.getmMap().addMarker(new MarkerOptions().position(new LatLng(site.getLatitude(), site.getLongitude())).title(site.getNom()));
+        }
     }
 
 
