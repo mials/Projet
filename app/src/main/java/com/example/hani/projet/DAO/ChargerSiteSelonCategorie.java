@@ -33,7 +33,7 @@ public class ChargerSiteSelonCategorie {
 
 
         try {
-            URL url = new URL("http://pandroid.esy.es/chargerSites.php");
+            URL url = new URL("http://pandroid.esy.es/chargerSitesSelonCategorie.php");
             connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
