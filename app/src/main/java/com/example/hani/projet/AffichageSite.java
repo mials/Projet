@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hani.projet.Ecouteurs.EcouteurBoutonAjouter;
 import com.example.hani.projet.Model.Outils;
 import com.example.hani.projet.Model.Site;
 
@@ -15,11 +17,15 @@ public class AffichageSite extends AppCompatActivity {
 
     TextView categorie , latitude , longitude, resume, adresse, nom;
     ImageView img;
+    Button ajouter , supprimer , modifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affichage_site);
+
+        this.ajouter = (Button) findViewById(R.id.ajouter);
+        this.ajouter.setOnClickListener(new EcouteurBoutonAjouter(this));
 
         Intent intent = getIntent();
         if (intent != null) {

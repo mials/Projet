@@ -45,11 +45,19 @@ public class ListeLieux extends ListActivity  {
     ArrayList<HashMap<String, String>> listItem;
     ProgressDialog dialog;
     String json;
+    double latitude , longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_lieux);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            latitude = Double.parseDouble(intent.getExtras().getString("latitude"));
+            longitude = Double.parseDouble(intent.getExtras().getString("longitude"));
+        }
+
         this.dialog = new ProgressDialog(this);
         this.dialog.setCancelable(false);
         this.dialog.setTitle("Progression...");
@@ -149,7 +157,8 @@ public class ListeLieux extends ListActivity  {
         Toast.makeText(this, "You have chosen" + " "+site.getNom(), Toast.LENGTH_LONG).show();
 
         Intent monIntent = new Intent(this,com.example.hani.projet.AffichageSite.class);
-       // monIntent.putExtra("TAG_SITE", element);
+        monIntent.putExtra("latitude", this.latitude);
+        monIntent.putExtra("longitude", this.longitude);
         Bundle mBundle = new Bundle();
         mBundle.putSerializable(Outils.TAG_SITE, site);
         monIntent.putExtras(mBundle);

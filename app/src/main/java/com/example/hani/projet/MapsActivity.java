@@ -8,10 +8,12 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.Button;
 
 import com.example.hani.projet.Boutons;
 import com.example.hani.projet.DAO.ChargerSiteSelonCategorie;
 import com.example.hani.projet.DAO.DAOMySqlSite;
+import com.example.hani.projet.Ecouteurs.EcouteurBoutonListe;
 import com.example.hani.projet.ListesSpinner;
 import com.example.hani.projet.Localisation;
 import com.example.hani.projet.MaListe;
@@ -43,10 +45,9 @@ public class MapsActivity extends FragmentActivity {
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private ListesSpinner listeSpinner;
     private LocationListener location;
-    private Boutons boutons;
+    private Button liste ,quitter;
     private MaListe mesLieux;
     private LocationManager locationManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +55,10 @@ public class MapsActivity extends FragmentActivity {
         setContentView(R.layout.activity_maps);
 
         this.location = new Localisation(this);
-        this.boutons = new Boutons(this);
+        this.liste = (Button) findViewById(R.id.list);
+        this.liste.setOnClickListener(new EcouteurBoutonListe(this));
         this.listeSpinner = new ListesSpinner(this);
+
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         try {

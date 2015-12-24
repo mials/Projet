@@ -57,6 +57,8 @@ public class Localisation implements LocationListener {
         CameraUpdate camera1 = CameraUpdateFactory.newLatLng(new LatLng(latitude, longitude));
         this.maps.getmMap().moveCamera(camera1);
 
+        this.initCateRay(this.maps.getListeSpinner().categorier.getSelectedItem().toString(), this.maps.getListeSpinner().rayon.getSelectedItem().toString());
+
     }
 
     @Override
@@ -116,6 +118,14 @@ public class Localisation implements LocationListener {
         }
     }
 
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
 }
 
 

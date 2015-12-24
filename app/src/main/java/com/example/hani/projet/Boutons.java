@@ -11,7 +11,7 @@ import com.example.hani.projet.Ecouteurs.EcouteurMesLieux;
  */
 public class Boutons {
     private MapsActivity maps;
-    private Button liste , maListe , logout, ajouter;
+    private Button liste ,quitter;
     private EcouteurBoutonListe ecouteurListe;
     private EcouteurMesLieux ecouteurMesLieux;
     private EcouteurBoutonAjouter ecouteurAjouter;
@@ -24,20 +24,18 @@ public class Boutons {
         this.ecouteurMesLieux = new EcouteurMesLieux(this.maps);
         this.ecouteurAjouter = new EcouteurBoutonAjouter(this.maps);
 
-        liste = (Button) this.maps.findViewById(R.id.button);
-        maListe = (Button) this.maps.findViewById(R.id.button2);
-        ajouter = (Button) this.maps.findViewById(R.id.button3);
+        liste = (Button) this.maps.findViewById(R.id.list);
 
         liste.setOnClickListener(this.ecouteurListe);
-        maListe.setOnClickListener(this.ecouteurMesLieux);
-        ajouter.setOnClickListener(this.ecouteurAjouter);
+        //maListe.setOnClickListener(this.ecouteurMesLieux);
+        //ajouter.setOnClickListener(this.ecouteurAjouter);
 
     }
 
 
     public void initialisation()
     {
-        liste = (Button) this.maps.findViewById(R.id.button);
+        liste = (Button) this.maps.findViewById(R.id.list);
         liste.setOnClickListener(this.ecouteurListe);
     }
 }
