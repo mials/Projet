@@ -118,10 +118,31 @@ public class DAOMySqlSite implements DAOMySql {
     }
 
     @Override
-    public ArrayList<HashMap<String, String>> chargerTous() {
-        new ChargerSites(this).execute();
-        return this.listSites;
-    }
+    public String chargerTous() {
+        HttpURLConnection connection;
+        StringBuilder result = new StringBuilder();
+
+        try {
+            URL url = new URL("http://pandroid.esy.es/chargerSites.php");
+            connection = (HttpURLConnection) url.openConnection();
+            InputStream in = new BufferedInputStream(connection.getInputStream());
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+
+        }catch( Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            //connection.disconnect();
+        }
+
+        return result.toString();
+     }
 
     @Override
     public ArrayList<Site> chargerSelonCategorie(String categorie, float latitude, float longitude) {

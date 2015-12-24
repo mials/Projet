@@ -41,11 +41,11 @@ import java.util.HashMap;
 public class ListeLieux extends ListActivity  {
 
     SimpleCursorAdapter mAdapter;
-    DAOMySqlSite daoMySqlSite;
     ArrayList<HashMap<String, String>> listItem;
     ProgressDialog dialog;
     String json;
     String latitude , longitude;
+    DAOMySqlSite daoMySqlSite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +57,11 @@ public class ListeLieux extends ListActivity  {
             latitude = intent.getExtras().getString("latitude");
             longitude = intent.getExtras().getString("longitude");
         }
-
-        this.dialog = new ProgressDialog(this);
-        this.dialog.setCancelable(false);
-        this.dialog.setTitle("Progression...");
-        this.dialog.setMessage("Patientez...");
+        this.daoMySqlSite = new DAOMySqlSite(this);
+        this.daoMySqlSite.dialog.show();
         this.listItem = new ArrayList<HashMap<String, String>>();
-
-        this.dialog.show();
         new Charger().execute();
-        //this.daoMySqlSite = new DAOMySqlSite(this);
+
     }
 
     void afficher()
@@ -174,36 +169,15 @@ public class ListeLieux extends ListActivity  {
 
         @Override
         protected String doInBackground(Void... params) {
-            HttpURLConnection connection;
-            StringBuilder result = new StringBuilder();
 
-            try {
-                URL url = new URL("http://pandroid.esy.es/chargerSites.php");
-                connection = (HttpURLConnection) url.openConnection();
-                InputStream in = new BufferedInputStream(connection.getInputStream());
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    result.append(line);
-                }
-
-            }catch( Exception e) {
-                e.printStackTrace();
-            }
-            finally {
-                //connection.disconnect();
-            }
-
-            return result.toString();
+            return daoMySqlSite.chargerTous();
         }
 
 
         @Override
         protected void onPostExecute(String resultat) {
             //super.onPostExecute(resultat);
-            dialog.dismiss();
+            daoMySqlSite.dialog.dismiss();
             json = resultat;
             afficher();
 
