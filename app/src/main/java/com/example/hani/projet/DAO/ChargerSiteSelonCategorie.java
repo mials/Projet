@@ -80,7 +80,7 @@ public class ChargerSiteSelonCategorie {
                 String adresse = c.getString(Outils.TAG_ADD);
                 String resume = c.getString(Outils.TAG_RESUM);
 
-                resultatSites.add(new Site(id_site,categorie,Float.parseFloat(latitude),Float.parseFloat(longitude),adresse,resume));
+                resultatSites.add(new Site(Integer.parseInt(id_site),nom,categorie,Float.parseFloat(latitude),Float.parseFloat(longitude),adresse,resume));
             }
 
         }catch (Exception e)
