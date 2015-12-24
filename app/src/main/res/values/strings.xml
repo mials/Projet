@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Projet</string>
+    <string name="title_activity_maps">Map</string>
+
+
+    <string-array name="Catégorie">
+        <item>Bar</item>
+        <item>Restaurant</item>
+        <item>Eglise</item>
+        <item>Place</item>
+        <item>Monument</item>
+        <item>Statue</item>
+    </string-array>
+
+
+    <string-array name="Rayon">
+        <item>5</item>
+        <item>10</item>
+        <item>50</item>
+        <item>100</item>
+        <item>+100</item>
+    </string-array>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_liste_lieux">ListeLieux</string>
+    <string name="title_activity_ma_liste">MaListe</string>
+    <string name="title_activity_formulaire_ajout">FormulaireAjout</string>
+    <string name="title_activity_affichage_site">affichageSite</string>
+
+
+</resources>
