@@ -3,6 +3,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.hani.projet.DAO.ChargerSiteSelonCategorie;
 import com.example.hani.projet.DAO.DAOMySqlSite;
@@ -87,6 +88,7 @@ public class Localisation implements LocationListener {
         longitudeMin = ""+(longitude - this.rayon/76);
         longitudeMax = ""+(longitude + this.rayon/76);
 
+        System.out.println("************* latitude : "+latitudeMin+"<"+latitude+"<"+latitudeMax);
         new Charger().execute();
     }
 

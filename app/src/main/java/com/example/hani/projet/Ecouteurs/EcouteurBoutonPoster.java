@@ -25,8 +25,8 @@ public class EcouteurBoutonPoster  implements Button.OnClickListener {
     public void onClick(View v) {
         Site site = new Site( this.poster.getNom().getText().toString(),
                               this.poster.getSpinnercategorier().getSelectedItem().toString(),
-                              Float.parseFloat(this.poster.getLongitude().getText().toString()),
                               Float.parseFloat(this.poster.getLatitude().getText().toString()),
+                              Float.parseFloat(this.poster.getLongitude().getText().toString()),
                               this.poster.getAdresse().getText().toString(),
                               this.poster.getResume().getText().toString());
         this.daoMySqlSite.sauver(site);
