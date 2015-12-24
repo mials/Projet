@@ -45,7 +45,7 @@ public class ListeLieux extends ListActivity  {
     ArrayList<HashMap<String, String>> listItem;
     ProgressDialog dialog;
     String json;
-    double latitude , longitude;
+    String latitude , longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +54,8 @@ public class ListeLieux extends ListActivity  {
 
         Intent intent = getIntent();
         if (intent != null) {
-            latitude = Double.parseDouble(intent.getExtras().getString("latitude"));
-            longitude = Double.parseDouble(intent.getExtras().getString("longitude"));
+            latitude = intent.getExtras().getString("latitude");
+            longitude = intent.getExtras().getString("longitude");
         }
 
         this.dialog = new ProgressDialog(this);

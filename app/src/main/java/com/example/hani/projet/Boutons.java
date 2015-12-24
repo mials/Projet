@@ -22,7 +22,7 @@ public class Boutons {
 
         this.ecouteurListe = new EcouteurBoutonListe(this.maps);
         this.ecouteurMesLieux = new EcouteurMesLieux(this.maps);
-        this.ecouteurAjouter = new EcouteurBoutonAjouter(this.maps);
+
 
         liste = (Button) this.maps.findViewById(R.id.list);
 

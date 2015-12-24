@@ -72,20 +72,22 @@
             android:text="Rayon :"
             android:id="@+id/textView3"
             android:textColor="#ffffff"
-            android:layout_alignTop="@+id/textView2"
-            android:layout_toLeftOf="@+id/quitter" />
+            android:layout_alignTop="@+id/Catégorie"
+            android:layout_alignLeft="@+id/quitter"
+            android:layout_alignStart="@+id/quitter" />
 
 
 
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Catégorie"
             android:spinnerMode="dialog"
             style="@style/Widget.AppCompat.Spinner"
-            android:layout_alignTop="@+id/textView2"
             android:layout_toRightOf="@+id/textView2"
             android:textColor="#ffffff"
+            android:layout_alignTop="@+id/textView2"
+            android:gravity="left"
             android:layout_toLeftOf="@+id/textView3"
             android:layout_toStartOf="@+id/textView3">
         </Spinner>
@@ -94,16 +96,15 @@
 
 
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Rayon"
             android:spinnerMode="dialog"
             style="@style/Widget.AppCompat.Spinner"
+            android:gravity="right"
             android:layout_alignTop="@+id/textView3"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/quitter"
-            android:layout_alignStart="@+id/quitter" />
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_alignBottom="@+id/Catégorie" />
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"

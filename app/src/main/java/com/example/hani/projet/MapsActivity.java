@@ -46,7 +46,6 @@ public class MapsActivity extends FragmentActivity {
     private ListesSpinner listeSpinner;
     private LocationListener location;
     private Button liste ,quitter;
-    private MaListe mesLieux;
     private LocationManager locationManager;
 
     @Override
