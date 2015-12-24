@@ -37,7 +37,7 @@ public class ListesSpinner implements AdapterView.OnItemSelectedListener {
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         TextView text = (TextView) view;
         Toast.makeText(this.activity, "vous avez selectionné " + text.getText(), Toast.LENGTH_SHORT).show();
-        this.activity.getLocation();
+        this.activity.getLocation().initCateRay(this.categorier.getSelectedItem().toString() , this.rayon.getSelectedItem().toString());
 
     }
 

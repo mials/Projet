@@ -31,7 +31,6 @@ public class ChargerSiteSelonCategorie {
         StringBuilder result = new StringBuilder();
         String parameters = "categorie="+categorie+"&latitudeMin="+latitudeMin+"&longitudeMin="+longitudeMin+"&latitudeMax="+latitudeMax+"&longitudeMax="+longitudeMax;
 
-
         try {
             URL url = new URL("http://pandroid.esy.es/chargerSitesSelonCategorie.php");
             connection = (HttpURLConnection) url.openConnection();
