@@ -6,6 +6,7 @@ import android.widget.Button;
 import com.example.hani.projet.DAO.DAOMySqlSite;
 import com.example.hani.projet.FormulaireAjout;
 import com.example.hani.projet.Model.Site;
+import com.example.hani.projet.SauverSite;
 
 /**
  * Created by slaim1u on 16/12/2015.
@@ -13,11 +14,10 @@ import com.example.hani.projet.Model.Site;
 public class EcouteurBoutonPoster  implements Button.OnClickListener {
 
     FormulaireAjout poster;
-    private DAOMySqlSite daoMySqlSite;
 
     public EcouteurBoutonPoster(FormulaireAjout poster) {
         this.poster = poster;
-        this.daoMySqlSite = new DAOMySqlSite(this.poster);
+
     }
 
 
@@ -29,8 +29,7 @@ public class EcouteurBoutonPoster  implements Button.OnClickListener {
                               Float.parseFloat(this.poster.getLongitude().getText().toString()),
                               this.poster.getAdresse().getText().toString(),
                               this.poster.getResume().getText().toString());
-        this.daoMySqlSite.sauver(site);
-        this.poster.finish();
+        new SauverSite(site, this.poster).execute();
 
     }
 }

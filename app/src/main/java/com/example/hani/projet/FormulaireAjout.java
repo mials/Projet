@@ -39,7 +39,7 @@ public class FormulaireAjout extends AppCompatActivity implements AdapterView.On
 
         Intent intent = getIntent();
         if (intent != null) {
-            Site site = (Site) intent.getSerializableExtra(Outils.TAG_SITE);
+            //Site site = (Site) intent.getSerializableExtra(Outils.TAG_SITE);
 
             this.nom = (EditText) this.findViewById(R.id.nom);
             this.adresse = (EditText) this.findViewById(R.id.adresse);

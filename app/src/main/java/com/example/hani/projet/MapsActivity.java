@@ -1,42 +1,17 @@
 package com.example.hani.projet;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Button;
 
-import com.example.hani.projet.Boutons;
-import com.example.hani.projet.DAO.ChargerSiteSelonCategorie;
-import com.example.hani.projet.DAO.DAOMySqlSite;
 import com.example.hani.projet.Ecouteurs.EcouteurBoutonListe;
-import com.example.hani.projet.ListesSpinner;
-import com.example.hani.projet.Localisation;
-import com.example.hani.projet.MaListe;
-import com.example.hani.projet.Model.Site;
-import com.example.hani.projet.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class MapsActivity extends FragmentActivity {

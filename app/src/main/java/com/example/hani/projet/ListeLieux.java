@@ -67,12 +67,6 @@ public class ListeLieux extends ListActivity  {
         this.dialog.show();
         new Charger().execute();
         //this.daoMySqlSite = new DAOMySqlSite(this);
-
-        //Création de la ArrayList qui nous permettra de remplire la listView
-        //ArrayList<HashMap<String, String>> listItem = this.daoMySqlSite.chargerTous();  //new ArrayList<HashMap<String, String>>();
-
-
-
     }
 
     void afficher()
@@ -140,6 +134,15 @@ public class ListeLieux extends ListActivity  {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 10)
+        {
+            this.recreate();
+        }
+    }
+
+    @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Object o = this.getListAdapter().getItem(position);
@@ -163,7 +166,7 @@ public class ListeLieux extends ListActivity  {
         mBundle.putSerializable(Outils.TAG_SITE, site);
         monIntent.putExtras(mBundle);
 
-        this.startActivity(monIntent);
+        this.startActivityForResult(monIntent , 10);
     }
 
 

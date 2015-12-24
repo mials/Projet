@@ -26,9 +26,8 @@ import java.util.HashMap;
  */
 public class DAOMySqlSite implements DAOMySql {
 
-    ProgressDialog dialog;
+    public ProgressDialog dialog;
     ArrayList<HashMap<String, String>> listSites; // utilisé juste dans la fonction chargertous pour contenir tous les sites qui sont dans la base de donnees
-    public final static String Server = "http://www.exemple.com/";
 
     public DAOMySqlSite(Context context) {
         this.dialog = new ProgressDialog(context );
@@ -38,11 +37,51 @@ public class DAOMySqlSite implements DAOMySql {
 
     }
 
-
     @Override
     public void sauver(Site site) {
-        this.dialog.show();
-        new SauverSite(site , this).execute();
+
+        HttpURLConnection connection;
+        OutputStreamWriter request = null;
+
+        URL url = null;
+        String response = null;
+        String parameters = "nom="+site.getNom()+"&categorie="+site.getCategorie()+"&latitude="+site.getLatitude()+"&longitude="+site.getLongitude()+"&adresse="+site.getAdresse()+"&resume="+site.getResume();
+        try
+        {
+            url = new URL("http://pandroid.esy.es/sauverSite.php");
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestMethod("POST");
+
+            request = new OutputStreamWriter(connection.getOutputStream());
+            request.write(parameters);
+            request.flush();
+            request.close();
+
+            String line = "";
+            InputStreamReader isr = new InputStreamReader(connection.getInputStream());
+            BufferedReader reader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null)
+            {
+                sb.append(line + "\n");
+            }
+            // Response from server after login process will be stored in response variable.
+            response = sb.toString();
+            // You can perform UI operations here
+            //Toast.makeText("Message from Server").show();
+            isr.close();
+            reader.close();
+
+        }
+        catch(IOException e)
+        {
+            // Error
+        }
+
+        //this.dialog.show();
+        //new SauverSite(site , this).execute();
 
 
     }
