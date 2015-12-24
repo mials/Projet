@@ -3,30 +3,16 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.example.hani.projet.DAO.ChargerSiteSelonCategorie;
 import com.example.hani.projet.DAO.DAOMySqlSite;
 import com.example.hani.projet.Model.Outils;
 import com.example.hani.projet.Model.Site;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Hani on 01/12/2015.
@@ -39,12 +25,12 @@ public class Localisation implements LocationListener {
     String strLongitude,strLatitude;
     double rayon;
     private MapsActivity maps;
-    ChargerSiteSelonCategorie chargerSiteSelonCategorie;
     Location location;
+    DAOMySqlSite daoMySqlSite;
 
     public Localisation(MapsActivity maps) {
         this.maps = maps;
-        this.chargerSiteSelonCategorie = new ChargerSiteSelonCategorie();
+        this.daoMySqlSite = new DAOMySqlSite(this.maps);
     }
 
     @Override
@@ -106,7 +92,7 @@ public class Localisation implements LocationListener {
         @Override
         protected ArrayList<Site> doInBackground(Void... params) {
 
-            return chargerSiteSelonCategorie.charger(categorie , latitudeMin , latitudeMax , longitudeMin, longitudeMax);
+            return daoMySqlSite.chargerSelonCategorie(categorie , latitudeMin , latitudeMax , longitudeMin, longitudeMax);
         }
 
 
