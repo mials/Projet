@@ -94,7 +94,7 @@ public class Localisation implements LocationListener {
         for (Site site : resultat) {
             loc.setLatitude(site.getLatitude());
             loc.setLongitude(site.getLongitude());
-            this.maps.getmMap().addMarker(new MarkerOptions().position(new LatLng(site.getLatitude(), site.getLongitude())).title(site.getNom()).snippet("Distance :"+this.location.distanceTo(loc)));
+            this.maps.getmMap().addMarker(new MarkerOptions().position(new LatLng(site.getLatitude(), site.getLongitude())).title(site.getNom()).snippet("Distance :"+this.location.distanceTo(loc)+"M"));
         }
     }
 
