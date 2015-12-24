@@ -68,8 +68,8 @@ public class ConfirmationSuppression {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Intent monIntent = new Intent(affichageSite,com.example.hani.projet.MapsActivity.class);
-            affichageSite.startActivityForResult(monIntent , 1);
+            //Intent monIntent = new Intent(affichageSite,com.example.hani.projet.MapsActivity.class);
+            affichageSite.finish();
         }
     }
 }

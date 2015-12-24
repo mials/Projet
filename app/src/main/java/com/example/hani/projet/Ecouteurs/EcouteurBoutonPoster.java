@@ -30,6 +30,7 @@ public class EcouteurBoutonPoster  implements Button.OnClickListener {
                               this.poster.getAdresse().getText().toString(),
                               this.poster.getResume().getText().toString());
         this.daoMySqlSite.sauver(site);
+        this.poster.finish();
 
     }
 }
