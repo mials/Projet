@@ -58,4 +58,8 @@ public class Site implements Serializable{
     public float getLongitude() {
         return longitude;
     }
+
+    public int getId() {
+        return id;
+    }
 }

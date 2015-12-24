@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hani.projet.Ecouteurs.EcouteurBoutonAjouter;
+import com.example.hani.projet.Ecouteurs.EcouteurBoutonSupprimer;
 import com.example.hani.projet.Model.Outils;
 import com.example.hani.projet.Model.Site;
 
@@ -19,6 +20,7 @@ public class AffichageSite extends AppCompatActivity {
     ImageView img;
     Button ajouter , supprimer , modifier;
     String latitudeCourante, longitudeCourante;
+    Site siteAffiche;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +29,12 @@ public class AffichageSite extends AppCompatActivity {
 
         this.ajouter = (Button) findViewById(R.id.ajouter);
         this.ajouter.setOnClickListener(new EcouteurBoutonAjouter(this));
+        this.supprimer = (Button) findViewById(R.id.supprimer);
+        this.supprimer.setOnClickListener(new EcouteurBoutonSupprimer(this));
 
         Intent intent = getIntent();
         if (intent != null) {
-            Site site = (Site) intent.getSerializableExtra(Outils.TAG_SITE);
+            this.siteAffiche = (Site) intent.getSerializableExtra(Outils.TAG_SITE);
             latitudeCourante = intent.getExtras().getString("latitude");
             longitudeCourante = intent.getExtras().getString("longitude");
 
@@ -43,12 +47,12 @@ public class AffichageSite extends AppCompatActivity {
             this.nom = (TextView) findViewById(R.id.Site);
             this.img = (ImageView) findViewById(R.id.imageView);
 
-            this.categorie.setText(site.getCategorie());
-            this.latitude.setText(""+site.getLatitude());
-            this.longitude.setText(""+site.getLongitude());
-            this.adresse.setText(site.getAdresse());
-            this.nom.setText(site.getNom());
-            this.resume.setText(site.getResume());
+            this.categorie.setText(this.siteAffiche.getCategorie());
+            this.latitude.setText(""+this.siteAffiche.getLatitude());
+            this.longitude.setText("" +this.siteAffiche.getLongitude());
+            this.adresse.setText(this.siteAffiche.getAdresse());
+            this.nom.setText(this.siteAffiche.getNom());
+            this.resume.setText(this.siteAffiche.getResume());
             this.img.setImageResource(R.drawable.img);
         }
     }
@@ -81,5 +85,9 @@ public class AffichageSite extends AppCompatActivity {
 
     public String getLongitudeCourante() {
         return longitudeCourante;
+    }
+
+    public Site getSiteAffiche() {
+        return siteAffiche;
     }
 }

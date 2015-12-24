@@ -14,6 +14,7 @@ public interface DAOMySql {
     abstract Site charger(int i);
     abstract ArrayList<HashMap<String, String>> chargerTous();
     abstract ArrayList<Site> chargerSelonCategorie(String categorie , float latitude , float longitude);
+    abstract void supprimerSite(int i);
 
 
 }
