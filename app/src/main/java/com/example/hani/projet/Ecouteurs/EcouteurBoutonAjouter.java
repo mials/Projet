@@ -28,7 +28,7 @@ public class EcouteurBoutonAjouter implements Button.OnClickListener{
         Intent monIntent = new Intent(this.activity,com.example.hani.projet.FormulaireAjout.class);
         monIntent.putExtra("latitude",this.activity.getLatitudeCourante());
         monIntent.putExtra("longitude",this.activity.getLongitudeCourante());
-        this.activity.startActivity(monIntent);
+        this.activity.startActivityForResult(monIntent, 1);
         
     }
 }

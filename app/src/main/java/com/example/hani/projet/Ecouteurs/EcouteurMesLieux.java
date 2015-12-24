@@ -20,6 +20,6 @@ public class EcouteurMesLieux implements Button.OnClickListener {
     @Override
     public void onClick(View v) {
         Intent monIntent = new Intent(this.maps,com.example.hani.projet.MaListe.class);
-        this.maps.startActivity(monIntent);
+        this.maps.startActivityForResult(monIntent , 1);
     }
 }

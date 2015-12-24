@@ -69,7 +69,7 @@ public class ConfirmationSuppression {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             Intent monIntent = new Intent(affichageSite,com.example.hani.projet.MapsActivity.class);
-            affichageSite.startActivity(monIntent);
+            affichageSite.startActivityForResult(monIntent , 1);
         }
     }
 }

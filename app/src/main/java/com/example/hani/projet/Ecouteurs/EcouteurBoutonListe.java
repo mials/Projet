@@ -27,7 +27,7 @@ public class EcouteurBoutonListe implements Button.OnClickListener {
         Intent monIntent = new Intent(this.maps,com.example.hani.projet.ListeLieux.class);
         monIntent.putExtra("latitude",""+this.maps.getLocation().getLatitude());
         monIntent.putExtra("longitude",""+this.maps.getLocation().getLongitude());
-        this.maps.startActivity(monIntent);
+        this.maps.startActivityForResult(monIntent , 1);
 
     }
 }
