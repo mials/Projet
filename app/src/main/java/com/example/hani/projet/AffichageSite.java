@@ -18,6 +18,7 @@ public class AffichageSite extends AppCompatActivity {
     TextView categorie , latitude , longitude, resume, adresse, nom;
     ImageView img;
     Button ajouter , supprimer , modifier;
+    String latitudeCourante, longitudeCourante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class AffichageSite extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             Site site = (Site) intent.getSerializableExtra(Outils.TAG_SITE);
+            latitudeCourante = intent.getExtras().getString("latitude");
+            longitudeCourante = intent.getExtras().getString("longitude");
 
 
             this.categorie = (TextView) findViewById(R.id.categorie);
@@ -70,5 +73,13 @@ public class AffichageSite extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public String getLatitudeCourante() {
+        return latitudeCourante;
+    }
+
+    public String getLongitudeCourante() {
+        return longitudeCourante;
     }
 }

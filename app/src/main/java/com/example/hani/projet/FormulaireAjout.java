@@ -1,5 +1,6 @@
 package com.example.hani.projet;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hani.projet.Ecouteurs.EcouteurBoutonPoster;
+import com.example.hani.projet.Model.Outils;
+import com.example.hani.projet.Model.Site;
 
 public class FormulaireAjout extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -34,15 +37,23 @@ public class FormulaireAjout extends AppCompatActivity implements AdapterView.On
         spinnercategorier.setOnItemSelectedListener(this);
 
 
-        this.nom = (EditText) this.findViewById(R.id.nom);
-        this.adresse = (EditText) this.findViewById(R.id.adresse);
-        this.resume = (EditText) this.findViewById(R.id.resume);
-        this.longitude = (EditText) this.findViewById(R.id.longitude);
-        this.latitude = (EditText) this.findViewById(R.id.latitude);
+        Intent intent = getIntent();
+        if (intent != null) {
+            Site site = (Site) intent.getSerializableExtra(Outils.TAG_SITE);
 
-        this.ecouteurBoutonPoster = new EcouteurBoutonPoster(this);
-        this.poster = (Button) this.findViewById(R.id.poster);
-        this.poster.setOnClickListener(this.ecouteurBoutonPoster);
+            this.nom = (EditText) this.findViewById(R.id.nom);
+            this.adresse = (EditText) this.findViewById(R.id.adresse);
+            this.resume = (EditText) this.findViewById(R.id.resume);
+            this.longitude = (EditText) this.findViewById(R.id.longitude);
+            this.latitude = (EditText) this.findViewById(R.id.latitude);
+
+            this.longitude.setText(intent.getExtras().getString("longitude"));
+            this.latitude.setText(intent.getExtras().getString("latitude"));
+
+            this.ecouteurBoutonPoster = new EcouteurBoutonPoster(this);
+            this.poster = (Button) this.findViewById(R.id.poster);
+            this.poster.setOnClickListener(this.ecouteurBoutonPoster);
+        }
     }
 
     @Override
