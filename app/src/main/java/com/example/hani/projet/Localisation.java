@@ -53,13 +53,8 @@ public class Localisation implements LocationListener {
         strLongitude = location.convert(longitude, location.FORMAT_DEGREES);
         strLatitude = location.convert(latitude, location.FORMAT_DEGREES);
 
-        this.maps.getmMap().addMarker(new MarkerOptions().position(new LatLng(49.133333, 6.166667)).title("Metz"));
-
-
         CameraUpdate camera1 = CameraUpdateFactory.newLatLng(new LatLng(latitude, longitude));
         this.maps.getmMap().moveCamera(camera1);
-
-        this.maps.getmMap().addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).title("Marker"));
 
     }
 
@@ -88,12 +83,12 @@ public class Localisation implements LocationListener {
         longitudeMin = ""+(longitude - this.rayon/76);
         longitudeMax = ""+(longitude + this.rayon/76);
 
-        System.out.println("************* latitude : "+latitudeMin+"<"+latitude+"<"+latitudeMax);
         new Charger().execute();
     }
 
     public void affichageSite(ArrayList<Site> resultat)
     {
+        this.maps.getmMap().clear();
         for (Site site : resultat) {
             this.maps.getmMap().addMarker(new MarkerOptions().position(new LatLng(site.getLatitude(), site.getLongitude())).title(site.getNom()));
         }
