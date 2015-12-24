@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hani.projet.Ecouteurs.EcouteurBoutonAjouter;
+import com.example.hani.projet.Ecouteurs.EcouteurBoutonModifier;
 import com.example.hani.projet.Ecouteurs.EcouteurBoutonSupprimer;
 import com.example.hani.projet.Model.Outils;
 import com.example.hani.projet.Model.Site;
@@ -31,6 +32,8 @@ public class AffichageSite extends AppCompatActivity {
         this.ajouter.setOnClickListener(new EcouteurBoutonAjouter(this));
         this.supprimer = (Button) findViewById(R.id.supprimer);
         this.supprimer.setOnClickListener(new EcouteurBoutonSupprimer(this));
+        this.modifier = (Button) findViewById(R.id.modifier);
+        this.modifier.setOnClickListener(new EcouteurBoutonModifier(this));
 
         Intent intent = getIntent();
         if (intent != null) {

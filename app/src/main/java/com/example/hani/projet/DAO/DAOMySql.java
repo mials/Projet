@@ -14,6 +14,7 @@ public interface DAOMySql {
     abstract Site charger(int i);
     abstract String chargerTous();
     abstract ArrayList<Site> chargerSelonCategorie(String categorie, String latitudeMin ,String latitudeMax, String longitudeMin , String longitudeMax);
+    abstract void updateSite(Site site);
     abstract void supprimerSite(int i);
 
 

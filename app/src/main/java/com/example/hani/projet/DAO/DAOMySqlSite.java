@@ -80,11 +80,6 @@ public class DAOMySqlSite implements DAOMySql {
         {
             // Error
         }
-
-        //this.dialog.show();
-        //new SauverSite(site , this).execute();
-
-
     }
 
     @Override
@@ -178,6 +173,51 @@ public class DAOMySqlSite implements DAOMySql {
         }
 
         return this.stringToListSite(result.toString());
+    }
+
+    @Override
+    public void updateSite(Site site) {
+
+        HttpURLConnection connection;
+        OutputStreamWriter request = null;
+
+        URL url = null;
+        String response = null;
+        String parameters = "id_site="+site.getId()+"&nom="+site.getNom()+"&categorie="+site.getCategorie()+"&latitude="+site.getLatitude()+"&longitude="+site.getLongitude()+"&adresse="+site.getAdresse()+"&resume="+site.getResume();
+        try
+        {
+            url = new URL("http://pandroid.esy.es/modifierSite.php");
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestMethod("POST");
+
+            request = new OutputStreamWriter(connection.getOutputStream());
+            request.write(parameters);
+            request.flush();
+            request.close();
+
+            String line = "";
+            InputStreamReader isr = new InputStreamReader(connection.getInputStream());
+            BufferedReader reader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null)
+            {
+                sb.append(line + "\n");
+            }
+            // Response from server after login process will be stored in response variable.
+            response = sb.toString();
+            // You can perform UI operations here
+            //Toast.makeText("Message from Server").show();
+            isr.close();
+            reader.close();
+
+        }
+        catch(IOException e)
+        {
+            // Error
+        }
+
     }
 
     @Override

@@ -54,7 +54,7 @@
             android:label="@string/title_activity_liste_lieux" >
         </activity>
         <activity
-            android:name=".MaListe"
+            android:name=".FormulaireModifierSite"
             android:label="@string/title_activity_ma_liste" >
         </activity>
         <activity

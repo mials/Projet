@@ -29,6 +29,7 @@ public class EcouteurBoutonPoster  implements Button.OnClickListener {
                               Float.parseFloat(this.poster.getLongitude().getText().toString()),
                               this.poster.getAdresse().getText().toString(),
                               this.poster.getResume().getText().toString());
+
         new SauverSite(site, this.poster).execute();
 
     }
