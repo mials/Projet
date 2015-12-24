@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.example.hani.projet.DAO.ChargerSiteSelonCategorie;
 import com.example.hani.projet.DAO.DAOMySqlSite;
+import com.example.hani.projet.Model.Outils;
 import com.example.hani.projet.Model.Site;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,7 +40,7 @@ public class Localisation implements LocationListener {
     double rayon;
     private MapsActivity maps;
     ChargerSiteSelonCategorie chargerSiteSelonCategorie;
-
+    Location location;
 
     public Localisation(MapsActivity maps) {
         this.maps = maps;
@@ -51,7 +52,7 @@ public class Localisation implements LocationListener {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         strLongitude = location.convert(longitude, location.FORMAT_DEGREES);
-        strLatitude = location.convert(latitude, location.FORMAT_DEGREES);
+        this.location = location;
 
         CameraUpdate camera1 = CameraUpdateFactory.newLatLng(new LatLng(latitude, longitude));
         this.maps.getmMap().moveCamera(camera1);
@@ -78,10 +79,10 @@ public class Localisation implements LocationListener {
     {
         this.categorie = categorie;
         this.rayon = Double.parseDouble(rayon);
-        latitudeMin = ""+(latitude - this.rayon/111);
-        latitudeMax = ""+(latitude + this.rayon/111);
-        longitudeMin = ""+(longitude - this.rayon/76);
-        longitudeMax = ""+(longitude + this.rayon/76);
+        latitudeMin = ""+(latitude - this.rayon/ Outils.LATITUDEKM);
+        latitudeMax = ""+(latitude + this.rayon/Outils.LATITUDEKM);
+        longitudeMin = ""+(longitude - this.rayon/Outils.LONGITUDEKM);
+        longitudeMax = ""+(longitude + this.rayon/Outils.LONGITUDEKM);
 
         new Charger().execute();
     }
@@ -89,8 +90,11 @@ public class Localisation implements LocationListener {
     public void affichageSite(ArrayList<Site> resultat)
     {
         this.maps.getmMap().clear();
+        Location loc = new Location("");
         for (Site site : resultat) {
-            this.maps.getmMap().addMarker(new MarkerOptions().position(new LatLng(site.getLatitude(), site.getLongitude())).title(site.getNom()));
+            loc.setLatitude(site.getLatitude());
+            loc.setLongitude(site.getLongitude());
+            this.maps.getmMap().addMarker(new MarkerOptions().position(new LatLng(site.getLatitude(), site.getLongitude())).title(site.getNom()).snippet("Distance :"+this.location.distanceTo(loc)));
         }
     }
 
