@@ -15,8 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hani.projet.Ecouteurs.EcouteurBoutonPoster;
-import com.example.hani.projet.Model.Outils;
-import com.example.hani.projet.Model.Site;
 
 public class FormulaireAjout extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 

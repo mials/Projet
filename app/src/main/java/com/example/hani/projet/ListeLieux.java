@@ -155,8 +155,10 @@ public class ListeLieux extends ListActivity  {
         Toast.makeText(this, "You have chosen" + " "+site.getNom(), Toast.LENGTH_LONG).show();
 
         Intent monIntent = new Intent(this,com.example.hani.projet.AffichageSite.class);
+
         monIntent.putExtra("latitude", this.latitude);
         monIntent.putExtra("longitude", this.longitude);
+
         Bundle mBundle = new Bundle();
         mBundle.putSerializable(Outils.TAG_SITE, site);
         monIntent.putExtras(mBundle);

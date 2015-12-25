@@ -22,12 +22,12 @@ public class EcouteurBoutonValider implements Button.OnClickListener  {
     public void onClick(View v) {
         Site site = new Site(
                 this.modifierSite.site.getId(),
-                this.modifierSite.getNom().toString(),
+                this.modifierSite.getNom().getText().toString(),
                 this.modifierSite.getSpinnercategorier().getSelectedItem().toString(),
-                Float.parseFloat(this.modifierSite.getLatitude().toString()),
-                Float.parseFloat(this.modifierSite.getLongitude().toString()),
-                this.modifierSite.getAdresse().toString(),
-                this.modifierSite.getResume().toString());
+                Float.parseFloat(this.modifierSite.getLatitude().getText().toString()),
+                Float.parseFloat(this.modifierSite.getLongitude().getText().toString()),
+                this.modifierSite.getAdresse().getText().toString(),
+                this.modifierSite.getResume().getText().toString());
 
         new ModifierSite(this.modifierSite, site).execute();
     }

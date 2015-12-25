@@ -186,7 +186,7 @@ public class DAOMySqlSite implements DAOMySql {
         String parameters = "id_site="+site.getId()+"&nom="+site.getNom()+"&categorie="+site.getCategorie()+"&latitude="+site.getLatitude()+"&longitude="+site.getLongitude()+"&adresse="+site.getAdresse()+"&resume="+site.getResume();
         try
         {
-            url = new URL("http://pandroid.esy.es/modifierSite.php");
+            url = new URL("http://pandroid.esy.es/modifier_site.php");
             connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
@@ -215,7 +215,7 @@ public class DAOMySqlSite implements DAOMySql {
         }
         catch(IOException e)
         {
-            // Error
+            System.out.println("erreur dans l'envoi de donnees"+e.getMessage());
         }
 
     }

@@ -1,27 +1,17 @@
 package com.example.hani.projet;
 
-import android.app.ListActivity;
-import android.app.LoaderManager;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
-import android.database.Cursor;
-import android.provider.ContactsContract;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 
-import com.example.hani.projet.Ecouteurs.EcouteurBoutonPoster;
 import com.example.hani.projet.Ecouteurs.EcouteurBoutonValider;
 import com.example.hani.projet.Model.Outils;
 import com.example.hani.projet.Model.Site;
@@ -35,26 +25,22 @@ public class FormulaireModifierSite extends AppCompatActivity implements Adapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.Modifier_Site);
-
-        this.modifier = (Button) findViewById(R.id.modifierBouton);
-        this.modifier.setOnClickListener(new EcouteurBoutonValider(this));
+        setContentView(R.layout.modifier_site);
 
         spinnercategorier = (Spinner) this.findViewById(R.id.spinner);
         ArrayAdapter adapterCategorie = ArrayAdapter.createFromResource(this, R.array.Catégorie,R.layout.spinner_item );
         spinnercategorier.setAdapter(adapterCategorie);
         spinnercategorier.setOnItemSelectedListener(this);
 
+        this.nom = (EditText) this.findViewById(R.id.nomM);
+        this.adresse = (EditText) this.findViewById(R.id.adresseM);
+        this.resume = (EditText) this.findViewById(R.id.resumeModif);
+        this.longitude = (EditText) this.findViewById(R.id.longitudeM);
+        this.latitude = (EditText) this.findViewById(R.id.latitudeM);
 
         Intent intent = getIntent();
         if (intent != null) {
             site = (Site) intent.getSerializableExtra(Outils.TAG_SITE);
-
-            this.nom = (EditText) this.findViewById(R.id.nom);
-            this.adresse = (EditText) this.findViewById(R.id.adresse);
-            this.resume = (EditText) this.findViewById(R.id.resume);
-            this.longitude = (EditText) this.findViewById(R.id.longitude);
-            this.latitude = (EditText) this.findViewById(R.id.latitude);
 
             this.nom.setText(site.getNom());
             this.adresse.setText(site.getAdresse());
@@ -64,7 +50,8 @@ public class FormulaireModifierSite extends AppCompatActivity implements Adapter
 
         }
 
-
+        this.modifier = (Button) findViewById(R.id.modifierBouton);
+        this.modifier.setOnClickListener(new EcouteurBoutonValider(this));
     }
 
     @Override
